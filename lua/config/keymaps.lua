@@ -73,3 +73,15 @@ end)
 keymap.set("n", "<leader>i", function()
 	require("emha.lsp").toggleInlayHints()
 end)
+
+-- Goto Preview mappings
+keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", opts)
+keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", opts)
+keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", opts)
+keymap.set("n", "gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", opts)
+keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)
+keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", opts)
+
+-- Keymapping untuk ToggleTerm
+keymap.set("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+keymap.set("t", "<C-\\>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })

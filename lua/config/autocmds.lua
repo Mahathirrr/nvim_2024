@@ -86,6 +86,10 @@ augroup reactindent
 augroup END
 ]])
 
+vim.cmd([[
+  autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion'}} })
+]])
+
 -- vim.cmd([[
 -- augroup kitty_mp
 --     autocmd!
@@ -93,3 +97,20 @@ augroup END
 --     au VimEnter * :silent !kitty @ set-spacing padding=0
 -- augroup END
 -- ]])
+--
+--
+-- vim.cmd([[
+-- augroup go_tmpl
+--     autocmd!
+--     autocmd BufRead,BufNewFile *.templ set filetype=gotmpl
+-- augroup END
+-- ]])
+
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = vim.lsp.buf.format })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*.templ" },
+	callback = function()
+		vim.lsp.buf.format({ async = true })
+	end,
+})

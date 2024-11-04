@@ -5,7 +5,7 @@ return {
 		lazy = true,
 	},
 	-- plugin untuk java jdtls
-	-- { "mfussenegger/nvim-jdtls", event = "BufRead" },
+	{ "mfussenegger/nvim-jdtls", ft = "java" },
 	-- snippets
 	{
 		"rafamadriz/friendly-snippets",
@@ -44,5 +44,11 @@ return {
 			"ToggleTermSendVisualSelection",
 		},
 		opts = require("emha.toggleterm"),
+	},
+	-- Plugin untuk akses database
+	{
+		"tpope/vim-dadbod",
+		"kristijanhusak/vim-dadbod-ui",
+		"kristijanhusak/vim-dadbod-completion",
 	},
 }

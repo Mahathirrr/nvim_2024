@@ -132,10 +132,10 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
-		keys = {
-			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-		},
+		-- keys = {
+		-- 	{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
+		-- 	{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+		-- },
 		opts = {
 			options = {
 				mode = "tabs",
@@ -162,7 +162,7 @@ return {
 	{
 		"b0o/incline.nvim",
 		dependencies = { "craftzdog/solarized-osaka.nvim" },
-		event = "BufReadPre",
+		-- event = "BufReadPre",
 		priority = 1200,
 		config = function()
 			local colors = require("solarized-osaka.colors").setup()

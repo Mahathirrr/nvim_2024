@@ -20,6 +20,7 @@ return {
 				"scss",
 				"sql",
 				"svelte",
+				"templ",
 			},
 
 			-- matchup = {
@@ -59,6 +60,7 @@ return {
 			vim.filetype.add({
 				extension = {
 					mdx = "mdx",
+					templ = "templ",
 				},
 			})
 			vim.treesitter.language.register("markdown", "mdx")

@@ -78,6 +78,28 @@ return {
 		lspconfig["html"].setup({
 			capabilities = capabilities2,
 			on_attach = on_attach,
+			filetypes = { "html", "templ" },
+		})
+
+		lspconfig.htmx.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "html", "templ" },
+		})
+
+		lspconfig["templ"].setup({
+			capabilities = capabilities2,
+			on_attach = on_attach,
+		})
+
+		lspconfig["ccls"].setup({
+			capabilities = capabilities2,
+			on_attach = on_attach,
+		})
+
+		lspconfig["cmake"].setup({
+			capabilities = capabilities2,
+			on_attach = on_attach,
 		})
 
 		-- configure volar server
@@ -110,34 +132,34 @@ return {
 		})
 
 		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				javascript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = true,
-					},
-				},
-				typescript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = true,
-					},
-				},
-			},
-		})
+		-- lspconfig["tsserver"].setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- 	settings = {
+		-- 		javascript = {
+		-- 			inlayHints = {
+		-- 				includeInlayEnumMemberValueHints = true,
+		-- 				includeInlayFunctionLikeReturnTypeHints = true,
+		-- 				includeInlayFunctionParameterTypeHints = true,
+		-- 				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+		-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+		-- 				includeInlayPropertyDeclarationTypeHints = true,
+		-- 				includeInlayVariableTypeHints = true,
+		-- 			},
+		-- 		},
+		-- 		typescript = {
+		-- 			inlayHints = {
+		-- 				includeInlayEnumMemberValueHints = true,
+		-- 				includeInlayFunctionLikeReturnTypeHints = true,
+		-- 				includeInlayFunctionParameterTypeHints = true,
+		-- 				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+		-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+		-- 				includeInlayPropertyDeclarationTypeHints = true,
+		-- 				includeInlayVariableTypeHints = true,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 
 		-- configure css server
 		lspconfig["cssls"].setup({
@@ -149,8 +171,12 @@ return {
 		lspconfig["tailwindcss"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "templ", "astro", "javascript", "typescript", "react" },
 			settings = {
 				tailwindCSS = {
+					includeLanguages = {
+						templ = "html",
+					},
 					classAttributes = { "class", "className", "ngClass" },
 					experimental = {
 						classRegex = {
@@ -206,6 +232,8 @@ return {
 			on_attach = on_attach,
 			filetypes = {
 				"html",
+				"htmx",
+				"templ",
 				"typescriptreact",
 				"javascriptreact",
 				"css",
@@ -233,17 +261,25 @@ return {
 						parameterNames = true,
 						rangeVariableTypes = true,
 					},
+					analyses = {
+						unusedparams = true,
+						shadow = true,
+					},
+					staticcheck = true,
 				},
 			},
+			filetypes = { "go", "gomod", "gotmpl" }, -- adding "gotmpl" for template files
 		})
 
 		-- configure jdtls language server
 		lspconfig["jdtls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "java" },
+			autostart = false,
 		})
 
-		-- configure jdtls language server
+		-- configure sqlls language server
 		lspconfig["sqlls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
